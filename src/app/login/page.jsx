@@ -1,7 +1,30 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { LoginUser } from "@/utils/api";
+import Cookies from "js-cookie";
 
 const Login = () => {
+  const router = useRouter();
+  const [user, setUser] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log("data===>", user);
+    try {
+      const res = await LoginUser(user);
+      if (res?.success === true) {
+        Cookies.set("token", "true");
+        router.push("/");
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
   return (
     <div>
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
@@ -17,7 +40,7 @@ const Login = () => {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-6" action="#" method="POST">
+          <form className="space-y-6" onSubmit={handleSubmit}>
             <div>
               <label
                 htmlFor="email"
@@ -30,9 +53,11 @@ const Login = () => {
                   id="email"
                   name="email"
                   type="email"
+                  value={user.email}
                   autoComplete="email"
                   required
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  onChange={(e) => setUser({ ...user, email: e.target.value })}
                 />
               </div>
             </div>
@@ -51,9 +76,13 @@ const Login = () => {
                   id="password"
                   name="password"
                   type="password"
+                  value={user.password}
                   autoComplete="current-password"
                   required
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  onChange={(e) =>
+                    setUser({ ...user, password: e.target.value })
+                  }
                 />
               </div>
             </div>
