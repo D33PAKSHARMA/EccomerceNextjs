@@ -11,6 +11,7 @@ import {
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
+import Image from "next/image";
 
 const Header = () => {
   const router = useRouter();
@@ -52,11 +53,13 @@ const Header = () => {
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                 <Link href="/">
                   <div className="flex flex-shrink-0 items-center">
-                    <img
-                      className="h-8 w-auto"
+                    {/* <Image
+                      className="h-8 w-16 relative"
                       src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
+                      objectFit="cover"
                       alt="Your Company"
-                    />
+                      layout="fill"
+                    /> */}
                   </div>
                 </Link>
                 <div className="hidden sm:ml-6 sm:block">
@@ -95,10 +98,12 @@ const Header = () => {
                     <Menu.Button className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                       <span className="absolute -inset-1.5" />
                       <span className="sr-only">Open user menu</span>
-                      <img
+                      <Image
                         className="h-8 w-8 rounded-full"
                         src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                         alt=""
+                        width={100}
+                        height={100}
                       />
                     </Menu.Button>
                   </div>

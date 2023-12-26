@@ -5,6 +5,7 @@ import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 const Cart = () => {
   //   const [open, setOpen] = useState(true);
@@ -62,8 +63,10 @@ const Cart = () => {
               {products.map((product) => (
                 <li key={product.id} className="flex py-6">
                   <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
-                    <img
+                    <Image
                       src={product.thumbnail}
+                      width={100}
+                      height={50}
                       alt={product.title}
                       className="h-full w-full object-cover object-center"
                     />

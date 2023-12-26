@@ -3,6 +3,7 @@ import AliceCarousel from "react-alice-carousel";
 import { MainCarouselData } from "./MainCarouselData";
 import "react-alice-carousel/lib/alice-carousel.css";
 import Link from "next/link";
+import Image from "next/image";
 
 // const responsive = {
 //   0: { items: 1 },
@@ -10,8 +11,14 @@ import Link from "next/link";
 //   1024: { items: 3 },
 // };
 
-const items = MainCarouselData.map((item) => (
-  <img src={item.image} alt={item.alt} />
+const items = MainCarouselData.map((item, count) => (
+  <Image
+    width={item.width * 2}
+    height={item.height * 2}
+    key={count}
+    src={item.image}
+    alt={item.alt}
+  />
 ));
 const MainCarousel = () => {
   return (

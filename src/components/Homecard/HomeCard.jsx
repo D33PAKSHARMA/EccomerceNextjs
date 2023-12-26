@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 const HomeCard = () => {
@@ -8,36 +9,44 @@ const HomeCard = () => {
       href: "#",
       imageSrc:
         "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
+      width: "100",
+      height: "60",
       imageAlt: "Front of men's Basic Tee in black.",
       price: "$35",
       color: "Black",
     },
     {
-      id: 1,
+      id: 2,
       name: "Basic Tee",
       href: "#",
       imageSrc:
         "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
+      width: "100",
+      height: "60",
       imageAlt: "Front of men's Basic Tee in black.",
       price: "$35",
       color: "Black",
     },
     {
-      id: 1,
+      id: 3,
       name: "Basic Tee",
       href: "#",
       imageSrc:
         "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
+      width: "100",
+      height: "60",
       imageAlt: "Front of men's Basic Tee in black.",
       price: "$35",
       color: "Black",
     },
     {
-      id: 1,
+      id: 4,
       name: "Basic Tee",
       href: "#",
       imageSrc:
         "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
+      width: "100",
+      height: "60",
       imageAlt: "Front of men's Basic Tee in black.",
       price: "$35",
       color: "Black",
@@ -54,9 +63,11 @@ const HomeCard = () => {
           {products.map((product) => (
             <div key={product.id} className="group relative">
               <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
-                <img
+                <Image
                   src={product.imageSrc}
                   alt={product.imageAlt}
+                  width={product.width}
+                  height={product.height}
                   className="h-full w-full object-cover object-center lg:h-full lg:w-full"
                 />
               </div>

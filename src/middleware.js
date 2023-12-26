@@ -8,14 +8,13 @@ export function middleware(request) {
   let loggedin = request.cookies.get("token");
   const { pathname } = request.nextUrl;
 
-  if (loggedin && pathname === "/login") {
-    return NextResponse.redirect(new URL("/", request.url));
-  }
-  if (loggedin && pathname === "/register") {
+  // Redirect logged-in users from the /login and /register routes to the home page
+  if (loggedin && (pathname === "/login" || pathname === "/register")) {
     return NextResponse.redirect(new URL("/", request.url));
   }
 
-  if (!loggedin && pathname !== "/login") {
+  // Redirect non-logged-in users from routes other than /login and /register to the /login page
+  if (!loggedin && pathname !== "/login" && pathname !== "/register") {
     return NextResponse.redirect(new URL("/login", request.url));
   }
 }
